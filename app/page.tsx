@@ -1,113 +1,89 @@
+import { PageLayout } from '@/components'
 import Image from 'next/image'
+import styles from "@/styles/home.module.css"
+import { services } from '@/utils/service'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    <PageLayout>
+      <>
+      
+        <main>
+            <div className='h-[60vh] lg:h-[100vh] relative '>
+                <img src='/img/land_1.png' alt='Home Page Image' className='h-[60%] w-[100%] lg:h-[90%] '  />
+                <div className='text-center absolute top-[12%] '>
+                    <div className='text-[12px] lg:text-[16px] text-[#CCCCCC] font-500 flex w-[15%] lg:w-[20%] justify-between gap-[6px] lg:gap-[18px] ml-[15%] lg:m-auto mb-[15px]  '>
+                        <p>Luxury</p>
+                        <Image src='/img/star.svg' height={50} width={50} alt='STAR' />
+                        <p>Discreet</p>
+                        <Image src='/img/star.svg' height={50} width={50} alt='STAR' />
+                        <p>Sensual</p>
+                        <Image src='/img/star.svg' height={50} width={50} alt='STAR' />
+                        <p>Realistic</p>
+                    </div>
+                    <p className='text-[30px] lg:text-[80px] font-700 mb-[15px] w-[60%] m-auto mb-[31px] '>
+                        Welcome to a world of boundless <span className='text-[#4A36EC] '>desires.</span>
+                    </p>
+                    <button className='bg-[#4A36EC] text-[#CCCCCC] m-auto mb-[50px] py-[10px] px-[20px] lg:py-[15px] lg:px-[25px] rounded-[10px] '>CONTACT US</button>
+                    <p className=' m-auto mb-[18px] text-[16px]  '>Scroll Down</p>
+                    <Image src='/img/arrow.svg' height={30} width={30} alt='arrow' className={styles.bounce} style={{margin:'auto'}} />
+                </div>
+            </div>
+              <div className='bg-[#1B1B1B] text-center py-[50px] lg:py-[100px] lg:text-[48px] font-700 relative '>
+                  <p className='w-[50%] m-auto'>Exploring Boundaries, Embracing Desires: <span className='text-[#4A36EC] '>Welcome to Fantasy Island</span></p>
+              </div>
+            
+            <section className=' lg:flex justify-around lg:py-[60px] py-[30px] '>
+                <div className='w-[95%] m-auto lg:m-[0] lg:w-[40%] '>
+                    <img src='/img/land_2.png' height={100} width={100} alt='Image 2' className='w-[100%] height-[100%] ' />
+                </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+                <div className=' w-[95%] m-auto lg:m-[0px] lg:w-[40%] text-left '>
+                      <p className='text-[#4A36EC] text-[15px] font-700 mb-[15px] '>About</p>
+                      <p className='text-[45px] font-700  text-[20px] lg:text-[45px] text-[#CCCCCC] '>Embark on an enchanting Journey to island where <span className=' text-[#4A36EC]'>curiosity knows no bounds</span></p>
+                      <p className='text-[12px] lg:text-[18px] font-500 text-#CCCCCC '> At Fantasy Island, we believe that human desires are as diverse as the colors of the rainbow, and we're here to celebrate the beauty of each unique shade. Our journey began with the shared passion of individuals who believe in the power of consensual exploration, trust, and the enchantment of desire. Our BDSM information website is a testament to our commitment to educate, empower, and ignite the flames of your deepest fantasies
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+Safety is paramount in the BDSM world, and we prioritize your well-being above all else. We provide comprehensive resources on consent, risk-awareness, and communication to ensure your journey is one of self-discovery and enlightenment.</p>
+                </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+            </section>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            <div className='w-[80%] m-auto '>
+                <img src="/img/rope-back.png" alt="Rope Back"  className='w-[100%] '/>
+            </div>
+
+            <section className='w-[95%] mb-[130px] m-auto'>
+                <div className='mb-[58px] text-center pt-[120px] '>
+                    <p className='text-[#4A36EC] text-[16px] font-700  '>OUR SERVICES</p>
+                    <p className='text-[32px] text-[#CCCCCC]'>Explore, Discover, Learn</p>
+                    <p>Availability of toys, supplement and lubricant within in-house authorization.</p>
+                </div>
+
+                <div className=' flex gap-[20px] items-center flex-wrap relative '>
+
+                  {services.map((service) => {
+                    return(
+                          <div className='rounded-[10px] border-[2px] border-[#1B1B1B] h-[24px] w-[60px] lg:h-[45px] lg:w-[120px] text-[#CCCCCC] text-center p-auto  text-[8px] lg:text-[16px] font-600 flex items-center justify-center ' key={service.id}>Bondage</div>
+                    )
+                  })}
+                  <div className=' absolute w-[80%] lg:w-[50%]  rounded-[15px] left-[9%] lg:left-[25%]  bg-[#1B1B1B]/[.95] text-center py-[15px] '>
+                        <p className='mb-[42px] text-[16px] lg:text-[32px] font-600 '>Embark on a voyage of self-discovery, Sensuality, and consensual exploration</p>
+                        <button className='text-[#CCCCCC] bg-[#4A36EC] rounded-[5px] py-[8px] px-[14px] lg:py-[15px] lg:px-[25px] text-[12px] lg:text-[16px] m-auto '>View Services</button>
+                  </div>
+                </div>
+            </section>
+
+            
+                    <div className='mb-[130px] w-[90%] m-auto  '>
+                      <img src="/img/land_3.png" alt="Image 3" />
+                    </div>
+                    <p className='text-[#CCCCCC] text-center text-[32px] font-600 py-[130px] bg-[#1B1B1B] '>At Fantasy Island, we celebrate the rich tapestry of human desire, where fantasies become reality, one click at a time.</p>
+            
+        </main>
+
+        </>
+    </PageLayout>
+    
   )
 }
