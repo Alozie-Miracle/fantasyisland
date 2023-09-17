@@ -1,6 +1,6 @@
 import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
+import Foot from '@/components/Foot/page'
+import Nav from '@/components/Nav/page'
 import React from 'react'
 
 type Props = {}
@@ -8,9 +8,9 @@ type Props = {}
 const page = (props: Props) => {
   return (
     <div>
-        <Navbar />
+        <Nav />
         <Contact />
-        <Footer />
+        <Foot />
     </div>
   )
 }

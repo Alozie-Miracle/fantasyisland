@@ -1,5 +1,5 @@
-import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
+import Foot from '@/components/Foot/page'
+import Nav from '@/components/Nav/page'
 import Services from '@/components/Services'
 import React from 'react'
 
@@ -10,9 +10,9 @@ interface Props {
 const page = (props: Props) => {
     return (
         <div>
-            <Navbar />
+            <Nav />
             <Services />
-            <Footer />
+            <Foot />
         </div>
     )
 }

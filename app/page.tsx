@@ -1,20 +1,11 @@
 
-// import About from '@/components/About'
-// import Hero from '@/components/Hero'
-// import Navbar from '@/components/Navbar'
-
-// export default function Home() {
-  // return (
-  //   <main className="h-ful">
-  //     <Navbar />
-  //     <Hero />
-  //     <About />
-  //   </main>
-
 import { PageLayout } from '@/components'
 import Image from 'next/image'
 import styles from "@/styles/home.module.css"
 import { services } from '@/utils/service'
+
+import chat from '@/assets/cryptocurrency_chat.png'
+import Hero from '@/components/Hero'
 
 export default function Home() {
   return (
@@ -23,7 +14,7 @@ export default function Home() {
       <>
       
         <main>
-            <div className='h-[60vh] lg:h-[100vh] relative '>
+            {/* <div className='h-[60vh] lg:h-[100vh] relative '>
                 <img src='/img/land_1.png' alt='Home Page Image' className='h-[60%] w-[100%] lg:h-[90%] '  />
                 <div className='text-center absolute top-[12%] '>
                     <div className='text-[12px] lg:text-[16px] text-[#CCCCCC] font-500 flex w-[15%] lg:w-[20%] justify-between gap-[6px] lg:gap-[18px] ml-[15%] lg:m-auto mb-[15px]  '>
@@ -41,8 +32,14 @@ export default function Home() {
                     <button type='button' className='bg-[#4A36EC] text-[#CCCCCC] m-auto mb-[50px] py-[10px] px-[20px] lg:py-[15px] lg:px-[25px] rounded-[10px] '>CONTACT US</button>
                     <p className=' m-auto mb-[18px] text-[16px]  '>Scroll Down</p>
                     <Image src='/img/arrow.svg' height={30} width={30} alt='arrow' className={styles.bounce} style={{margin:'auto'}} />
+
+                    <div className='absolute bottom-5 right-10'>
+                      <Image src={chat} alt='chat' className='text-white cursor-pointer' />
+                    </div>
                 </div>
-            </div>
+            </div> */}
+            <Hero />
+
               <div className='bg-[#1B1B1B] text-center py-[50px] lg:py-[100px] lg:text-[48px] font-700 relative '>
                   <p className='w-[50%] m-auto'>Exploring Boundaries, Embracing Desires: <span className='text-[#4A36EC] '>Welcome to Fantasy Island</span></p>
               </div>
