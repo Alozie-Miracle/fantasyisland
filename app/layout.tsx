@@ -1,8 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+import { Poppins } from "next/font/google";
+
+const inter = Poppins({ weight: "600", preload: false });
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',
