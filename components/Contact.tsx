@@ -22,30 +22,96 @@ const Contact = (props: Props) => {
             </div>
             <div className='bg-[#0C0C0C]'>
                 <div className='text-white py-10'>
-                <div className='max-w-5xl mx-auto'>
-                    <div className='border-t border-gray-400 pt-5 w-[20%]'>
-                        <h2>Get in contact <br /> with us?</h2>
-                        <p className='text-[8px] text-gray-500'>Find all our contact info below.</p>
+                    <div className='max-w-5xl mx-auto'>
+                        <div className='border-t border-gray-400 pt-5 w-[20%]'>
+                            <h2>Get in contact <br /> with us?</h2>
+                            <p className='text-[8px] text-gray-500'>Find all our contact info below.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className='max-w-5xl mx-auto '>
-                <div className='w-full flex flex-wrap gap-5'>
-                    <div className='bg-[#131313] p-2 py-4 w-[45%]'>
-                        <h2 className='text-xs'>General Support and Enquiries</h2>
-                        <div className='h-[1px] w-full bg-gray-100' />
-                        <p className='text-[10px]'>official1fantasyisland@gmail.com</p>
-                    </div>
+                <div className='max-w-5xl mx-auto '>
+                    <div className='w-full flex flex-wrap gap-5'>
+                        <div className='bg-[#131313] p-2 py-4 w-[40%] flex flex-col gap-3 rounded-md'>
+                            <h2 className='text-xs'>General Support and Enquiries</h2>
+                            <div className='h-[1px] w-full bg-gray-100' />
+                            <p className='text-[10px]'>official1fantasyisland@gmail.com</p>
+                        </div>
 
-                    <div className='bg-[#131313] p-2 py-4 w-[45%]'>
-                        <h2 className='text-xs'>Reports</h2>
-                        <div className='h-[1px] w-full bg-gray-100' />
-                        <p className='text-[10px]'>official1fantasyisland@gmail.com</p>
+                        <div className='bg-[#131313] p-2 py-4 w-[40%] flex flex-col gap-3 rounded-md'>
+                            <h2 className='text-xs'>Reports</h2>
+                            <div className='h-[1px] w-full bg-gray-100' />
+                            <p className='text-[10px]'>official1fantasyisland@gmail.com</p>
+                        </div>
                     </div>
-                    <p className='text-[10px] text-center w-full'>Availability of toys, supplements and lubricant within in-house authorization.</p>
+                    <p className='text-[10px] text-center w-full py-2'>Availability of toys, supplements and lubricant within in-house authorization.</p>
+                    <div className='w-full flex flex-wrap gap-5 py-3'>
+                        <div className='bg-[#131313] p-2 py-4 w-[40%] flex flex-col gap-2 rounded-md'>
+                            <h2 className='text-xs'>Contact Information</h2>
+                            <div className='h-[1px] w-full bg-gray-100' />
+                            <p className='text-[10px]'>WhatsApp United Kingdom: +44 7529418982‪</p>
+                            <p className='text-[10px]'>WhatsApp Canada: +1 5812790030‪</p>
+                            <p className='text-[10px]'>Text or Calls United States: +97 07036595</p>
+                        </div>
+
+                        <div className='bg-[#131313] p-2 py-4 w-[40%] flex flex-col gap-2 rounded-md'>
+                            <h2 className='text-xs'>Payment Methods</h2>
+                            <div className='h-[1px] w-full bg-gray-100' />
+                            <p className='text-[10px]'>Bitcoin, E-transfer</p>
+                            <p className='text-[10px]'>Cashapp, Zelle</p>
+                            <p className='text-[10px]'>PayPal, Venmo</p>
+                        </div>
+                    </div>
+                    <div className='bg-[#131313] p-2 py-4 w-[82%] flex flex-col gap-2 mt-5 rounded-md'>
+                        <h2 className='text-xs'>Packages</h2>
+                        <div className='h-[1px] w-full bg-gray-100' />
+                        <p className='text-[10px]'>Reservation: Regular 580 (split $300)</p>
+                        <p className='text-[10px]'>VIP: $1150</p>
+                        <p className='text-[10px]'>Membership: $1650</p>
+                    </div>
                 </div>
-            </div>
+
+                <div className='py-10 max-w-5xl mx-auto'>
+                    <h1 className='text-3xl text-center'>Leather Love: Uncover the allure of <br /> <span className='text-[#4A36EC]'>fetish wear</span> and <span className='text-[#4A36EC]'>leather play</span></h1>
+                    <div className='border-t border-gray-400 pt-5 w-[20%] mt-16'>
+                        <h2>Please fill the contact <br /> form</h2>
+                        <p className='text-[10px] text-gray-500'>Enter the details provided below and we will contact you shortly</p>
+                    </div>
+
+                    <div className='px-2 text-[10px] flex justify-between gap-5 pt-10'>
+                        <div className='flex-1'>
+                            <p>FIRST NAME</p>
+                            <div className='bg-[#131313] p-2 rounded-md border border-[#131313]'>
+                                <input type="text" placeholder='Enter your first name' className='border-none outline-none bg-transparent w-full' />
+                            </div>
+                        </div>
+
+                        <div className='flex-1'>
+                            <p>LAST NAME</p>
+                            <div className='bg-[#131313] p-2 rounded-md border border-[#131313]'>
+                                <input type="text" placeholder='Enter your last name' className='border-none outline-none bg-transparent w-full' />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='px-2 text-[10px] flex justify-between gap-5 pt-10'>
+                        <div className='flex-1'>
+                            <p>EMAIL</p>
+                            <div className='bg-[#131313] p-2 rounded-md border border-[#131313]'>
+                                <input type="text" placeholder='Enter your email' className='border-none outline-none bg-transparent w-full' />
+                            </div>
+                        </div>
+
+                        <div className='flex-1'>
+                            <p>MESSAGE</p>
+                            <div className='bg-[#131313] p-2 rounded-md border border-[#131313]'>
+                                <textarea cols={30} rows={3}  placeholder='Enter your message' className='border-none outline-none bg-transparent w-full' />
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type='button' className='p-2 text-white bg-[#4A36EC] text-xs rounded-md px-5'>SUBMIT</button>
+                </div>
             </div>
         </div>
     )
