@@ -41,7 +41,9 @@ const Chats = ({ setChatInit }: Props) => {
                     {chats.map((chat) => (
                         <div key={chat.id} className={`${chat.user === 'admin' ? 'justify-start bg-[#EDEBEB] p-2' : 'justify-end' } flex items-center rounded-md gap-2`}>
                             {chat.user === 'admin' && (
-                                <Image src={headset} alt='headset' className='h-5 w-5' /> 
+                                <div className='bg-black rounded-md p-2 w-10 flex items-center justify-center'>
+                                    <Image src={headset} alt='headset' className='h-5 w-5' />
+                                </div>
                             )}
                             <p className={`${chat.user === 'admin' ? 'text-left' : 'text-right text-[#4A36EC]'} text-[10px]`} >{chat.message}</p>
                             {chat.user === 'user' && (

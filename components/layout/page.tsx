@@ -8,13 +8,13 @@ interface Layoutprops {
 export function PageLayout({ children }: Layoutprops) {
   return (
     <>
-        <Nav />
+      <Nav />
 
-            <div className=''>
-                {children}
-            </div>
+        <div className=''>
+          {children}
+        </div>
 
-        <Foot />
+      <Foot />
     </>
   )
 }

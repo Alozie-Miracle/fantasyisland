@@ -8,9 +8,9 @@ type Props = {}
 const page = (props: Props) => {
   return (
     <div>
-        <Nav />
-        <Contact />
-        <Foot />
+      <Nav />
+      <Contact />
+      <Foot />
     </div>
   )
 }

@@ -35,7 +35,7 @@ const Hero = (props: Props) => {
                 <div className='flex flex-col items-center justify-center h-full'>
                     <div className='flex flex-col h-[80%] items-center justify-between'>
                         <div className='flex flex-col h-[80%] items-center'>
-                            <div className='flex items-center gap-5 text-white text-sm'>
+                            <div className='flex items-center gap-3 md:gap-5 text-white text-sm'>
                                 <p className=''>luxury</p>
                                 <StarIcon className='h-3 w-3 text-[#4A36EC]' />
                                 <p>Discreet</p>
@@ -44,13 +44,13 @@ const Hero = (props: Props) => {
                                 <StarIcon className='h-3 w-3 text-[#4A36EC]' />
                                 <p>Realistic</p>
                             </div>
-                            <h2 className='text-white text-center text-7xl mt-10 flex flex-col gap-2'><span>Welcome to a world</span> 
+                            <h2 className='text-white text-center text-5xl md:text-7xl mt-10 flex flex-col gap-2'><span>Welcome to a world</span> 
                                 <span className='mt-5'> of boundless 
                                 <span className='text-[#4A36EC]'> desires.</span>
                                 </span> 
                             </h2>
 
-                            <button type='button' className='text-white text-xs bg-[#4A36EC] p-2 px-3 mt-10'>Contact us</button>
+                            <button type='button' className='text-white text-xs bg-[#4A36EC] p-2 py-3 px-3 mt-10 w-[90%] md:w-[40%] mx-auto'>Contact us</button>
                         </div>
 
                         <div className='flex flex-col gap-5 items-center'>
@@ -79,7 +79,7 @@ const Hero = (props: Props) => {
             </div>
 
             <div className='absolute bottom-24 right-10 z-30'>
-                <Image src={chat} alt='chat' className='text-white cursor-pointer' onClick={()=> setToggle(!toggle)} />
+                <Image src={chat} alt='chat' className=' cursor-pointer bg-white rounded-full' onClick={()=> setToggle(!toggle)} />
             </div>
         </div>
     )

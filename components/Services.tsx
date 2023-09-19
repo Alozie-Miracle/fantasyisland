@@ -26,7 +26,7 @@ const Services = (props: Props) => {
           <p className='text-[10px] md:text-xs'>Shown below are a list of all our services offered at Fantasy Island. <br /> Go on, you might see something you like</p>
         </div>
 
-        <div className='p-5 px-2 md:px-10 text-white flex flex-wrap gap-5 justify-center items-center'>
+        <div className='p-5 px-2 md:px-10 text-white flex flex-wrap gap-3 justify-center items-center'>
           {options.map((option: {name : string}, index: number) => (
             <Options name={option.name} index={index + 1} key={index} />
           ))}
