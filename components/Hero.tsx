@@ -7,6 +7,7 @@ import { ArrowDownIcon } from '@heroicons/react/24/solid'
 import chat from '@/assets/cryptocurrency_chat.png'
 import Modal from './Modal'
 import Chats from './Chats'
+import Link from 'next/link'
 interface Props {
     
 }
@@ -50,10 +51,10 @@ const Hero = (props: Props) => {
                                 </span> 
                             </h2>
 
-                            <button type='button' className='text-white text-xs bg-[#4A36EC] p-2 py-3 px-3 mt-10 w-[90%] md:w-[40%] mx-auto'>Contact us</button>
+                            <Link className='text-white text-xs bg-[#4A36EC] p-2 py-3 px-3 mt-10 w-[90%] md:w-[40%] mx-auto text-center' href='/contact'>Contact us</Link>
                         </div>
 
-                        <div className='flex flex-col gap-5 items-center'>
+                        <div className='flex flex-col gap-5 items-center mb-5'>
                             <p className='text-white text-xs'>Scroll down</p>
                             <ArrowDownIcon className='h-5 w-5 text-white animate-bounce cursor-pointer' onClick={autoScrolll} />
                         </div>

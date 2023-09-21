@@ -22,9 +22,9 @@ const Contact = (props: Props) => {
 
                 
             </div>
-            <div className='bg-[#0C0C0C]'>
-                <div className='text-white py-5 md:py-10'>
-                    <div className='mx:max-w-5xl max-w-[90%] mx-auto'>
+            <div className='bg-[#0C0C0C] '>
+                <div className='text-white py-5 md:py-10 max-w-[98%] md:max-w-5xl mx-auto'>
+                    <div className=''>
                         <div className='md:border-t md:border-gray-400 pt-5 md:w-[20%]'>
                             <h2>Get in contact <br className='hidden md:flex' /> with us?</h2>
                             <p className='text-[8px] text-gray-500'>Find all our contact info below.</p>
@@ -32,7 +32,7 @@ const Contact = (props: Props) => {
                     </div>
                 </div>
 
-                <div className='mx:max-w-5xl max-w-[90%] mx-auto '>
+                <div className='md:max-w-5xl max-w-[90%] mx-auto '>
                     <div className='w-full flex flex-wrap gap-2 md:gap-5'>
                         <div className='bg-[#131313] p-2 py-4 w-[100%] md:w-[40%] flex flex-col gap-3 rounded-md'>
                             <h2 className='text-xs'>General Support and Enquiries</h2>

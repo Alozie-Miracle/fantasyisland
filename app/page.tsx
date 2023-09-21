@@ -6,6 +6,8 @@ import { services } from '@/utils/service'
 
 import chat from '@/assets/cryptocurrency_chat.png'
 import Hero from '@/components/Hero'
+import { options } from '@/constants'
+import Options from '@/components/Options'
 
 export default function Home() {
   return (
@@ -48,11 +50,11 @@ Safety is paramount in the BDSM world, and we prioritize your well-being above a
 
                 <div className=' flex gap-[20px] items-center flex-wrap relative '>
 
-                  {services.map((service) => {
-                    return(
-                          <div className='rounded-[10px] border-[2px] border-[#1B1B1B] h-[24px] w-[60px] lg:h-[45px] lg:w-[120px] text-[#CCCCCC] text-center p-auto  text-[8px] lg:text-[16px] font-600 flex items-center justify-center ' key={service.id}>Bondage</div>
-                    )
-                  })}
+                  <div className='p-5 px-2 md:px-10 text-white flex flex-wrap gap-3 justify-center items-center'>
+                    {options.map((option: {name : string}, index: number) => (
+                      <Options name={option.name} index={index + 1} key={index} />
+                    ))}
+                  </div>
                   <div className=' absolute w-[80%] lg:w-[50%]  rounded-[15px] left-[9%] lg:left-[25%]  bg-[#1B1B1B]/[.95] text-center py-[15px] '>
                         <p className='mb-[42px] text-[16px] lg:text-[32px] font-600 '>Embark on a voyage of self-discovery, Sensuality, and consensual exploration</p>
                         <button className='text-[#CCCCCC] bg-[#4A36EC] rounded-[5px] py-[8px] px-[14px] lg:py-[15px] lg:px-[25px] text-[12px] lg:text-[16px] m-auto '>View Services</button>

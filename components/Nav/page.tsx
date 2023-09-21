@@ -1,13 +1,23 @@
- 'use client'
-
+'use client'
 import Image from 'next/image'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import hambuger from '@/assets/hamburger.png'
+import { usePathname } from 'next/navigation'
+import { services } from '@/utils/service'
 
 export default function Nav() {
     const [toggle, setToggle] = useState(false)
+    const [pathname, setPathname] = useState('/')
+
+    const router = usePathname()
+
+    useEffect(() => {
+
+        setPathname(router)
+    
+    }, [router])
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -21,9 +31,9 @@ export default function Nav() {
     <div className='bg-[#0C0C0C] h-[65px] w-[100%] text-[#FFFFFF] lg:flex items-center justify-between hidden '>
         <div className='ml-[98px] cursor-pointer ' onClick={scrollToTop}> <Image src='../img/logo.svg' height={100} width= {100} alt={'Logo'} className='w-[173px] ' />  </div>
         <div className='flex w-[30%] justify-between text-[16px] font-500 '>
-            <Link href='/' className='cursor-pointer'>Home</Link>
-            <Link href='/services' className='cursor-pointer'>Services</Link>
-            <Link href='/contact' className='cursor-pointer'>Contact</Link>
+            <Link href='/' className={`${pathname === '/' && 'text-[#4A36EC]'}  'cursor-pointer'`}>Home</Link>
+            <Link href='/services' className={`${pathname === '/services' && 'text-[#4A36EC]'}  'cursor-pointer'`}>Services</Link>
+            <Link href='/contact' className={`${pathname === '/contact' && 'text-[#4A36EC]'}  'cursor-pointer'`}>Contact</Link>
         </div>
         <div className='flex items-center w-[20%] gap-[18px] mr-[98px] '>
             <Image src='../img/email.svg' height={100} width={100} alt='email' className='w-[19px] h-[17px] ' />
