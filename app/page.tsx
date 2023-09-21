@@ -8,6 +8,7 @@ import chat from '@/assets/cryptocurrency_chat.png'
 import Hero from '@/components/Hero'
 import { options } from '@/constants'
 import Options from '@/components/Options'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -57,7 +58,7 @@ Safety is paramount in the BDSM world, and we prioritize your well-being above a
                   </div>
                   <div className=' absolute w-[80%] lg:w-[50%]  rounded-[15px] left-[9%] lg:left-[25%]  bg-[#1B1B1B]/[.95] text-center py-[15px] '>
                         <p className='mb-[42px] text-[16px] lg:text-[32px] font-600 '>Embark on a voyage of self-discovery, Sensuality, and consensual exploration</p>
-                        <button className='text-[#CCCCCC] bg-[#4A36EC] rounded-[5px] py-[8px] px-[14px] lg:py-[15px] lg:px-[25px] text-[12px] lg:text-[16px] m-auto '>View Services</button>
+                        <button className='text-[#CCCCCC] bg-[#4A36EC] rounded-[5px] py-[8px] px-[14px] lg:py-[15px] lg:px-[25px] text-[12px] lg:text-[16px] m-auto '><Link href='/services'>View Services</Link></button>
                   </div>
                 </div>
             </section>
