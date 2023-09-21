@@ -31,7 +31,7 @@ export default function Home() {
                 <div className=' w-[95%] m-auto lg:m-[0px] lg:w-[40%] text-left '>
                       <p className='text-[#4A36EC] text-[15px] font-700 mb-[15px] '>About</p>
                       <p className=' font-700 text-[20px] lg:text-[45px] text-[#CCCCCC] '>Embark on an enchanting Journey to island where <span className=' text-[#4A36EC]'>curiosity knows no bounds</span></p>
-                      <p className='text-[8px]  md:text-[12px] lg:text-[18px] font-500 text-[#CCCCCC] '> At Fantasy Island, we believe that human desires are as diverse as the colors of the rainbow, and we're here to celebrate the beauty of each unique shade. Our journey began with the shared passion of individuals who believe in the power of consensual exploration, trust, and the enchantment of desire. Our BDSM information website is a testament to our commitment to educate, empower, and ignite the flames of your deepest fantasies
+                      <p className='text-[12px] lg:text-[18px] font-500 text-[#CCCCCC] '> At Fantasy Island, we believe that human desires are as diverse as the colors of the rainbow, and we're here to celebrate the beauty of each unique shade. Our journey began with the shared passion of individuals who believe in the power of consensual exploration, trust, and the enchantment of desire. Our BDSM information website is a testament to our commitment to educate, empower, and ignite the flames of your deepest fantasies
 
 Safety is paramount in the BDSM world, and we prioritize your well-being above all else. We provide comprehensive resources on consent, risk-awareness, and communication to ensure your journey is one of self-discovery and enlightenment.</p>
                 </div>
