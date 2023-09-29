@@ -37,7 +37,7 @@ export default function Nav() {
         </div>
         <div className='flex items-center w-[20%] gap-[18px] mr-[98px] '>
             <Image src='../img/email.svg' height={100} width={100} alt='email' className='w-[19px] h-[17px] ' />
-            <a href="mailto: officialfantasy@gmail.com" className='text-[13px] font-500 '>officialfantasy@gmail.com</a>
+            <a href="mailto: officialfantasy@gmail.com" className='text-[13px] font-500 '>official1fantasyisland@gmail.com</a>
         </div>
     </div>
 
