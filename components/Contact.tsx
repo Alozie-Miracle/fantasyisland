@@ -62,6 +62,8 @@ const Contact = (props: Props) => {
                             <p className='text-[10px]'>Bitcoin, E-transfer</p>
                             <p className='text-[10px]'>Cashapp, Zelle</p>
                             <p className='text-[10px]'>PayPal, Venmo</p>
+                            <p className='text-[10px]'>MoneyGram</p>
+                            <p className='text-[10px]'>WesternUnion</p>
                         </div>
                     </div>
                     <div className='bg-[#131313] p-2 py-4 w-[100%] md:w-[40%] flex flex-col gap-2 mt-5 rounded-md'>
