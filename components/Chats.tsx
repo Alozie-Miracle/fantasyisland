@@ -14,18 +14,26 @@ type Props = {
     chatId: string
 }
 
+interface Chat {
+    id: string;
+    userId: string;
+    title: string;
+    read: false;
+}
 
-type Message = {
-    id: number;
+interface Messages {
+    email: string;
+    id: string;
     user: string;
     message: string;
-};
+    timeStamp: Date
+}
 
 const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
-    const [chats, setChats] = useState<Message[]>([])
-    const [chatTitle, setChatTitle] = useState({})
+    const [chats, setChats] = useState<Messages[]>([])
+    const [chatTitle, setChatTitle] = useState<Chat[]>([])
     const [input, setInput] = useState('')
-    const [messages, setMessages] = useState([])
+    const [messages, setMessages] = useState<Messages[]>([])
 
     useEffect(() => {
         // Create a copy of the 'messages' array to avoid modifying the original array
@@ -38,12 +46,14 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
     useEffect(() => {
         const getChat = async () => {
             const querySnapshot = await getDocs(collection(db, "chats"));
-            const fetchedChats: any = [];
+            const fetchedChats: Chat[] = [];
 
             querySnapshot.forEach((doc) => {
                 fetchedChats.push({
                     id: doc.id,
-                    ...doc.data(),
+                    userId: doc.data().userId,
+                    title: doc.data().title,
+                    read: doc.data()?.read,
                 });
             });
 
@@ -63,12 +73,15 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
         const messagesRef = collection(db, "chats", chatId, "messages");
         const messagesQuery = query(messagesRef, orderBy("timestamp", "asc"));
         const querySnapshot = await getDocs(messagesQuery);
-        const fetchedMessages: any = [];
+        const fetchedMessages: Messages[] = [];
 
         querySnapshot.forEach((doc) => {
             fetchedMessages.push({
             id: doc.id,
-            ...doc.data(),
+            email: doc.data().email,
+            user: doc.data().user,
+            message: doc.data().message,
+            timeStamp: doc.data().timeStamp
             });
         });
 
@@ -94,7 +107,8 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
                 message: input,
                 timestamp: serverTimestamp(),
                 email: auth?.currentUser?.email,
-                user: 'user'
+                user: 'user',
+                
             })
             .then(() => {
                 fetchMessages();
@@ -124,14 +138,14 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
             {messages && (
                 <div className='text-xs flex flex-col gap-2 px-2 pt-2'>
                     {messages.map((messages) => (
-                        <div key={messages.id} className={`${messages.user === 'admin' ? 'justify-start bg-[#EDEBEB] p-2' : 'justify-end' } flex items-center rounded-md gap-2`}>
-                            {messages.user === 'admin' && (
+                        <div key={messages?.id} className={`${messages?.user === 'admin' ? 'justify-start bg-[#EDEBEB] p-2' : 'justify-end' } flex items-center rounded-md gap-2`}>
+                            {messages?.user === 'admin' && (
                                 <div className='bg-black rounded-md p-2 w-10 flex items-center justify-center'>
                                     <Image src={headset} alt='headset' className='h-5 w-5' />
                                 </div>
                             )}
-                            <p className={`${messages.user === 'admin' ? 'text-left' : 'text-right text-[#4A36EC]'} text-[10px]`} >{messages.message}</p>
-                            {messages.user === 'user' && (
+                            <p className={`${messages?.user === 'admin' ? 'text-left' : 'text-right text-[#4A36EC]'} text-[10px]`} >{messages?.message}</p>
+                            {messages?.user === 'user' && (
                                 <div className='bg-[#4A36EC] p-2 rounded-md text-white'><UserIcon className='h-5 w-5' /></div>
                             )}
                         </div>

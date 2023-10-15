@@ -14,21 +14,30 @@ type Props = {
     setChatId: React.Dispatch<React.SetStateAction<string>>;
 }
 
+interface Chat {
+    id: string;
+    userId: string;
+    title: string;
+    read: false;
+}
+
 const Modal = ({setToggle, setChatInit, setChatId}: Props) => {
     const [title, setTitle] = useState('')
-    const [chatTitle, setChatTitle] = useState([])
+    const [chatTitle, setChatTitle] = useState<Chat[]>([])
     const [selectTitle, setSelectTitle] = useState('')
     const uid = localStorage.getItem('uid')
 
     useEffect(() => {
         const getChat = async () => {
             const querySnapshot = await getDocs(collection(db, "chats"));
-            const fetchedChats: any = [];
+            const fetchedChats: Chat[] = [];
 
             querySnapshot.forEach((doc) => {
                 fetchedChats.push({
                     id: doc.id,
-                    ...doc.data(),
+                    userId: doc.data().userId,
+                    title: doc.data().title,
+                    read: doc.data()?.read
                 });
             });
 
@@ -54,7 +63,8 @@ const Modal = ({setToggle, setChatInit, setChatId}: Props) => {
         if (title.length === 0) return;
         await addDoc(collection(db, "chats"), {
         title: title,
-        userId: uid
+        userId: uid,
+        read: false,
         })
         .then(() => {
             setChatInit(true);
