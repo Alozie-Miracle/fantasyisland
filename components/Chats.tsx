@@ -131,10 +131,11 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
         <div className='px-2 py-3 flex items-center justify-between text-xs bg-[#333333] rounded-t-md w-full'>
             <ChevronLeftIcon className='text-white h-5 w-5 cursor-pointer' onClick={()=> setChatInit(false)} />
             <p className='text-[10px]'>{chatTitle[0]?.title}</p>
-            <p className='text-[8px] text-gray-400'>{new Date().getTime()}</p>
+            <p className='text-[8px] text-gray-400'>{new Date().toLocaleTimeString()}</p>
         </div>
 
-        <div className='bg-[#FFFFFF]  rounded-b-md text-black h-[60vh] relative'>
+        <div>
+            <div className='bg-[#FFFFFF] h-[50vh] pb-12 rounded-b-md text-black  relative overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#4A36EC]/80 '>
             {messages && (
                 <div className='text-xs flex flex-col gap-2 px-2 pt-2'>
                     {messages.map((messages) => (
@@ -152,7 +153,9 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
                     ))}
                 </div>
             )}
-            <div className='absolute bottom-2 px-2 w-full'>
+            
+        </div>
+        <div className='absolute bottom-2 px-2 w-full'>
                 {!messages.length && <p className='mt-auto text-[10px] text-center '>No message here yet, enter a title and type your message to start a conversation</p>}
 
                 <div className='flex items-center justify-between w-full bg-[#EDEBEB] py-2 px-2 rounded-md'>
