@@ -8,6 +8,8 @@ import chat from '@/assets/cryptocurrency_chat.png'
 import Modal from './Modal'
 import Chats from './Chats'
 import Link from 'next/link'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { app } from '@/constants/firebase'
 interface Props {
     
 }
@@ -16,7 +18,7 @@ const Hero = (props: Props) => {
 
     const [toggle, setToggle] = useState(false)
     const [chatInit, setChatInit] = useState(false)
-
+    const [chatId, setChatId] = useState('')
 
     const autoScrolll = () => {
         const height = window.innerHeight
@@ -27,6 +29,22 @@ const Hero = (props: Props) => {
             top: height
         })
         
+    }
+
+    const handleClick =  () => {
+        const uid = localStorage.getItem('uid')
+        
+        
+        if (uid === null) {
+            window.location.assign('/login')
+            console.log(uid);
+        }
+        else {
+            
+            localStorage.setItem('uid', uid)
+            setToggle(!toggle)
+            
+        }
     }
 
     return (
@@ -70,21 +88,21 @@ const Hero = (props: Props) => {
 
             </div>
 
-            <div className='fixed bottom-48 right-10 z-30'>
+            <div className='fixed bottom-48 md:bottom-32 right-10 z-30'>
 
                 {chatInit ? (
-                    <Chats setChatInit={setChatInit} />
+                    <Chats chatId={chatId} setChatId={setChatId} setChatInit={setChatInit} />
                 ): (
                     <>
                         {toggle && (
-                    <Modal setToggle={setToggle} setChatInit={setChatInit} />
+                    <Modal setChatId={setChatId} setToggle={setToggle} setChatInit={setChatInit} />
                 )}
                     </>
                 )}
             </div>
 
-            <div className='fixed bottom-24 right-10 z-30'>
-                <Image src={chat} alt='chat' className=' cursor-pointer bg-white rounded-full' onClick={()=> setToggle(!toggle)} />
+            <div className='fixed bottom-24 md:bottom-16 right-10 z-30'>
+                <Image src={chat} alt='chat' className=' cursor-pointer bg-white rounded-full hover:scale-110 transition-all duration-300 ease-in-out active:scale-95' onClick={handleClick} />
             </div>
         </div>
     )

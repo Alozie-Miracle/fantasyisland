@@ -1,17 +1,68 @@
-
+'use client'
 import { PaperAirplaneIcon, XCircleIcon } from '@heroicons/react/24/outline'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import hand from '@/assets/mdi_hand-wave.png'
 import headset from '@/assets/ri_customer-service-2-fill.png'
 import Image from 'next/image'
+import { addDoc, collection, getDocs } from 'firebase/firestore'
+import { db } from '@/constants/firebase'
 
 type Props = {
     setToggle: React.Dispatch<React.SetStateAction<boolean>>;
     setChatInit: React.Dispatch<React.SetStateAction<boolean>>;
+    setChatId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Modal = ({setToggle, setChatInit}: Props) => {
+const Modal = ({setToggle, setChatInit, setChatId}: Props) => {
+    const [title, setTitle] = useState('')
+    const [chatTitle, setChatTitle] = useState([])
+    const [selectTitle, setSelectTitle] = useState('')
+    const uid = localStorage.getItem('uid')
+
+    useEffect(() => {
+        const getChat = async () => {
+            const querySnapshot = await getDocs(collection(db, "chats"));
+            const fetchedChats: any = [];
+
+            querySnapshot.forEach((doc) => {
+                fetchedChats.push({
+                    id: doc.id,
+                    ...doc.data(),
+                });
+            });
+
+            const chattitle = fetchedChats.filter((title: any) => {
+                return title.userId === uid;
+            });
+
+            setChatTitle(chattitle);
+        };
+
+        getChat();
+    }, []);
+
+    useEffect(() => {
+        if(selectTitle){
+            setChatInit(true);
+            setChatId(selectTitle)
+        }
+    }, [selectTitle])
+
+    const addchat = async () => {
+        const uid = localStorage.getItem('uid')
+        if (title.length === 0) return;
+        await addDoc(collection(db, "chats"), {
+        title: title,
+        userId: uid
+        })
+        .then(() => {
+            setChatInit(true);
+        })
+        .catch((error) => alert(error.message));
+    };
+
+
   return (
     <div className='text-white w-[330px]'>
         <div className='px-2 py-3 flex items-center justify-between text-xs bg-[#333333] rounded-t-md w-full'>
@@ -56,9 +107,19 @@ const Modal = ({setToggle, setChatInit}: Props) => {
                     </div>
                 </div>
             </div>
-            <div className='p-2 px-3  bg-black rounded-md text-xs flex items-center justify-between text-white mt-5 cursor-pointer' onClick={() => {
-                setChatInit(true);
-            }}>
+            {chatTitle.length > 0 ? (
+                <select value={selectTitle} onChange={e => setSelectTitle(e.target.value)} aria-label="Sorting Options" className='p-2 w-full border-none text-xs cursor-pointer'>
+                    <option value="">Select chat title</option>
+                        {chatTitle.map((title) => (
+                            <option key={title?.id} value={title?.id}>{title?.title}</option>
+                        ))}
+                    </select>
+            ): (
+                <div className='text-[10px] mt-5 border border-gray-500 p-2'>
+                    <input value={title} onChange={e => setTitle(e.target.value)} className='bg-transparent flex-1 outline-none border-none' type="text" placeholder='Re: Enter Title' />
+                </div>
+            )}
+            <div className='p-2 px-3  bg-black rounded-md text-xs flex items-center justify-between text-white mt-5 cursor-pointer' onClick={ addchat}>
                 <p>Start New Conversation</p>
                 <PaperAirplaneIcon className='text-white h-5 w-5' />
             </div>
