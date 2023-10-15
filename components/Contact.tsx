@@ -51,9 +51,10 @@ const Contact = (props: Props) => {
                         <div className='bg-[#131313] p-2 py-4 w-[100%] md:w-[40%] flex flex-col gap-2 rounded-md'>
                             <h2 className='text-xs'>Contact Information</h2>
                             <div className='h-[1px] w-full bg-gray-100' />
-                            <p className='text-[10px]'>WhatsApp United Kingdom: +44 7529418982‪</p>
+                            {/* <p className='text-[10px]'>WhatsApp United Kingdom: +44 7529418982‪</p>
                             <p className='text-[10px]'>WhatsApp Canada: +1 5812790030‪</p>
-                            <p className='text-[10px]'>Text or Calls United States: +97 07036595</p>
+                            <p className='text-[10px]'>Text or Calls United States: +97 07036595</p> */}
+                           <p className='text-[10px]'>Our Call/text numbers are provided to registered clients to ensure maintenance of the privacy policy. Contact us via our email and live chat for to subscribe for a the fantasy experience. </p>
                         </div>
 
                         <div className='bg-[#131313] p-2 py-4 w-[100%] md:w-[40%] flex flex-col gap-2 rounded-md'>
@@ -62,6 +63,8 @@ const Contact = (props: Props) => {
                             <p className='text-[10px]'>Bitcoin, E-transfer</p>
                             <p className='text-[10px]'>Cashapp, Zelle</p>
                             <p className='text-[10px]'>PayPal, Venmo</p>
+                            <p className='text-[10px]'>MoneyGram</p>
+                            <p className='text-[10px]'>WesternUnion</p>
                         </div>
                     </div>
                     <div className='bg-[#131313] p-2 py-4 w-[100%] md:w-[40%] flex flex-col gap-2 mt-5 rounded-md'>
