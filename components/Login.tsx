@@ -41,7 +41,6 @@ const Login = (prop: Props) => {
             if(userCredential.user.email  !== undefined){
                 const user = userCredential.user;
                 localStorage.setItem('uid', user.uid);
-                localStorage.setItem('email', user.email)
                 window.location.assign('/')
             }
             
