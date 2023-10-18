@@ -2,7 +2,7 @@
 import { messages } from '@/constants/messages';
 import { ChevronLeftIcon, PaperAirplaneIcon, UserIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import headset from '@/assets/ri_customer-service-2-fill.png'
 import { addDoc, collection, getDocs, orderBy, query, serverTimestamp } from 'firebase/firestore';
 import { app, db } from '@/constants/firebase';
@@ -34,6 +34,7 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
     const [chatTitle, setChatTitle] = useState<Chat[]>([])
     const [input, setInput] = useState('')
     const [messages, setMessages] = useState<Messages[]>([])
+    const ScrollView = useRef(null)
 
     useEffect(() => {
         // Create a copy of the 'messages' array to avoid modifying the original array
@@ -92,7 +93,7 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
 
     useEffect(() => {
         fetchMessages()
-    }, [chatId])
+    }, [chatId, messages])
 
 
     const sendMessage = async () => {
@@ -118,12 +119,20 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
             setInput("");
 
             // Scroll to the end of the ScrollView
-            //   scrollViewRef.current.scrollToEnd({ animated: true });
+            if (ScrollView.current) {
+                ScrollView.current.scrollTop = ScrollView.current.scrollHeight;
+            }
         }
 
     return;
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  if (e.key === 'Enter') {
+    // Handle Enter key press here, e.g., trigger a function or submit a form.
+    sendMessage(); // You can call your send message function here.
+  }
+};
 
 
   return (
@@ -135,7 +144,7 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
         </div>
 
         <div>
-            <div className='bg-[#FFFFFF] h-[50vh] pb-12 rounded-b-md text-black  relative overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#4A36EC]/80 '>
+            <div ref={ScrollView} className='bg-[#FFFFFF] h-[50vh] pb-12 rounded-b-md text-black  relative overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#4A36EC]/80 '>
             {messages && (
                 <div className='text-xs flex flex-col gap-2 px-2 pt-2'>
                     {messages.map((messages) => (
@@ -160,7 +169,7 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
 
                 <div className='flex items-center justify-between w-full bg-[#EDEBEB] py-2 px-2 rounded-md'>
                     <div className='flex-1 border-r border-gray-500 h-4 flex items-center justify-center px-2'>
-                        <input value={input} onChange={e => setInput(e.target.value)} type="text" placeholder='Type here and send message...' className='text-[10px] text-gray-600 w-full outline-none border-none bg-transparent' />
+                        <input value={input} onChange={e => setInput(e.target.value)} type="text" placeholder='Type here and send message...' className='text-[10px] text-gray-600 w-full outline-none border-none bg-transparent' onKeyDown={handleKeyDown} />
                     </div>
                     <PaperAirplaneIcon onClick={sendMessage} className='text-black h-5 w-5 ml-2 cursor-pointer active:scale-95 transition-all duration-200 ease-in-out ' />
                 </div>

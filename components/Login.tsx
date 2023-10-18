@@ -18,6 +18,11 @@ type Props = {
     
 }
 
+interface User {
+    uid: string;
+    email: string;
+}
+
 const Login = (prop: Props) => {
     const [toggle, settoggle] = useState(false)
     const [email, setemail] = useState("");
@@ -35,7 +40,8 @@ const Login = (prop: Props) => {
         .then((userCredential) => {
             if(userCredential.user.email  !== undefined){
                 const user = userCredential.user;
-                localStorage.setItem('uid', user.uid)
+                localStorage.setItem('uid', user.uid);
+                localStorage.setItem('email', user.email)
                 window.location.assign('/')
             }
             

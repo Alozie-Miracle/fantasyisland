@@ -46,6 +46,8 @@ const Modal = ({setToggle, setChatInit, setChatId}: Props) => {
             });
 
             setChatTitle(chattitle);
+            console.log(fetchedChats);
+            
         };
 
         getChat();
