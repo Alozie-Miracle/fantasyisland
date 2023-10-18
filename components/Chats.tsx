@@ -34,7 +34,7 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
     const [chatTitle, setChatTitle] = useState<Chat[]>([])
     const [input, setInput] = useState('')
     const [messages, setMessages] = useState<Messages[]>([])
-    const ScrollView = useRef(null)
+    const scrollViewRef = useRef(null)
 
     useEffect(() => {
         // Create a copy of the 'messages' array to avoid modifying the original array
@@ -119,9 +119,12 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
             setInput("");
 
             // Scroll to the end of the ScrollView
-            if (ScrollView.current) {
-                ScrollView.current.scrollTop = ScrollView.current.scrollHeight;
+            const container = scrollViewRef.current as HTMLElement | null; // Use assertion
+
+            if (container) {
+                container.scrollTop = container.scrollHeight;
             }
+
         }
 
     return;
@@ -144,7 +147,7 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
         </div>
 
         <div>
-            <div ref={ScrollView} className='bg-[#FFFFFF] h-[50vh] pb-12 rounded-b-md text-black  relative overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#4A36EC]/80 '>
+            <div ref={scrollViewRef} className='bg-[#FFFFFF] h-[50vh] pb-12 rounded-b-md text-black  relative overflow-y-scroll scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#4A36EC]/80 '>
             {messages && (
                 <div className='text-xs flex flex-col gap-2 px-2 pt-2'>
                     {messages.map((messages) => (
