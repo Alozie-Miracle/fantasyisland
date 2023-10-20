@@ -4,7 +4,7 @@ import { ChevronLeftIcon, PaperAirplaneIcon, UserIcon } from '@heroicons/react/2
 import Image from 'next/image';
 import React, { useEffect, useState, useRef } from 'react'
 import headset from '@/assets/ri_customer-service-2-fill.png'
-import { addDoc, collection, getDocs, orderBy, query, serverTimestamp } from 'firebase/firestore';
+import { addDoc, collection, getDocs, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
 import { app, db } from '@/constants/firebase';
 import { getAuth } from 'firebase/auth';
 
@@ -26,7 +26,7 @@ interface Messages {
     id: string;
     user: string;
     message: string;
-    timeStamp: Date
+    timestamp: Date
 }
 
 const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
@@ -69,31 +69,56 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
         getChat();
     }, [chatId]);
 
-    const fetchMessages = async () => {
-        // Fetch messages from the "messages" subcollection of the chat document
-        const messagesRef = collection(db, "chats", chatId, "messages");
-        const messagesQuery = query(messagesRef, orderBy("timestamp", "asc"));
-        const querySnapshot = await getDocs(messagesQuery);
-        const fetchedMessages: Messages[] = [];
+    // const fetchMessages = async () => {
+    //     // Fetch messages from the "messages" subcollection of the chat document
+    //     const messagesRef = collection(db, "chats", chatId, "messages");
+    //     const messagesQuery = query(messagesRef, orderBy("timestamp", "asc"));
+    //     const querySnapshot = await getDocs(messagesQuery);
+    //     const fetchedMessages: Messages[] = [];
 
-        querySnapshot.forEach((doc) => {
-            fetchedMessages.push({
-            id: doc.id,
-            email: doc.data().email,
-            user: doc.data().user,
-            message: doc.data().message,
-            timeStamp: doc.data().timeStamp
-            });
-        });
+    //     querySnapshot.forEach((doc) => {
+    //         fetchedMessages.push({
+    //         id: doc.id,
+    //         email: doc.data().email,
+    //         user: doc.data().user,
+    //         message: doc.data().message,
+    //         timeStamp: doc.data().timeStamp
+    //         });
+    //     });
 
-        setMessages(fetchedMessages);
-        console.log(messages);
+    //     setMessages(fetchedMessages);
+    //     console.log(messages);
         
-        };
+    //     };
+
+    // useEffect(() => {
+    //     fetchMessages()
+    // }, [chatId, messages])
 
     useEffect(() => {
-        fetchMessages()
-    }, [chatId, messages])
+    // Set up a query for the messages collection
+    if (!chatId) return;
+        const messagesRef = collection(db, 'chats', chatId, 'messages');
+        const messagesQuery = query(messagesRef, orderBy('timestamp', 'asc'));
+
+        // Set up a snapshot listener to listen for changes
+        const unsubscribe = onSnapshot(messagesQuery, (snapshot) => {
+            const fetchedMessages: Messages[] = [];
+            snapshot.forEach((doc) => {
+                fetchedMessages.push({
+                    id: doc.id,
+                    user: doc.data().user,
+                    message: doc.data().message,
+                    timestamp: doc.data().timestamp,
+                    email: doc.data().email,
+                });
+            });
+            setMessages(fetchedMessages);
+        });
+
+        // This will unsubscribe from the listener when the component unmounts
+        return unsubscribe;
+    }, [chatId]);
 
 
     const sendMessage = async () => {
@@ -110,9 +135,6 @@ const Chats = ({ setChatInit, setChatId, chatId }: Props) => {
                 email: auth?.currentUser?.email,
                 user: 'user',
                 
-            })
-            .then(() => {
-                fetchMessages();
             })
 
             // Clear the input field after sending the message
