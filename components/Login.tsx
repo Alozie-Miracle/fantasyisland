@@ -80,7 +80,7 @@ const Login = (prop: Props) => {
                         <EyeIcon className='h-5 w-5 cursor-pointer' onClick={()=> settoggle(true)} />
                     )}
                 </div>
-                  <p className='text-center text-xs py-2'>I don't have an account, <Link href='/register' className='text-red-500'>login</Link></p>
+                  <p className='text-center text-xs py-2'>I don't have an account, <Link href='/register' className='text-red-500'>register</Link></p>
                 <button type='button' className='w-full my-2 rounded-xl bg-[#4A36EC] py-3 text-xs text-white' onClick={handleClick}>Log In</button>
 
             </div>
